@@ -14,7 +14,7 @@ var academyDialog = new builder.BotConnectorBot();
 var server = restify.createServer();
 server.use(academyDialog.verifyBotFramework({ appId: 'chatbot123', appSecret: '59f44ecb3f704bb49f1f2a9635e5e33c' }));
 server.post('/api/messages', academyDialog.verifyBotFramework(),academyDialog.listen());
-server.listen(config.port,config.ip,function () {
+server.listen(process.env.port || process.env.PORT || 3978,function () {
 	try{
 		console.log('%s listening to %s', server.name, server.url);
 	}
