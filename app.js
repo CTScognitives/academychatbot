@@ -14,7 +14,11 @@ var academyDialog = new builder.BotConnectorBot();
 var server = restify.createServer();
 server.use(academyDialog.verifyBotFramework({ appId: process.env.MICROSOFT_APP_ID , appSecret: process.env.MICROSOFT_APP_PASSWORD}));
 server.post('/api/messages', academyDialog.verifyBotFramework(),academyDialog.listen());
-server.listen(process.env.port || process.env.PORT || 3978,function () {
+server.get(/.*/, restify.serveStatic({
+	'directory': '.',
+	'default': 'index.html'
+}));
+server.listen(process.env.port || 3978,function () {
 	try{
 		console.log('%s listening to %s', server.name, server.url);
 	}
