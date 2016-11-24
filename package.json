@@ -21,8 +21,5 @@
     "orientjs": "^2.2.4",
     "promise": "^7.1.1",
     "restify": "^4.3.0"
-  },
-  "engine": {
-    "node": ">= 5.10.1"
   }
 }
