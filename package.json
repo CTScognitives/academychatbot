@@ -18,8 +18,6 @@
   "homepage": "https://github.com/CTScognitives/academychatbot#readme",
   "dependencies": {
     "botbuilder": "^0.10.2",
-    "gulp": "^3.9.1",
-    "node-gyp": "^3.4.0",
     "orientjs": "^2.2.4",
     "promise": "^7.1.1",
     "restify": "^4.3.0"
