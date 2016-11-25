@@ -4,7 +4,7 @@ var config = require('./configuration');
 var prompts = require('./prompts');
 var orient = require('./db');
 var utilities = require('./utilities');
-var fs = require('fs');
+//var fs = require('fs');
 
 var luisDialog = new builder.LuisDialog(config.model);
 var academyDialog = new builder.BotConnectorBot();
