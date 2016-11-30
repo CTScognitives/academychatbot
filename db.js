@@ -2,7 +2,7 @@ var Promise = require('promise');
 var OrientDB =require('orientjs');
 var config = require('./configuration');
 var utilities = require('./utilities');
-var server = OrientDB({ host: config.publicip, HTTPport: config.db_port, username: config.db_username, password: config.db_password });
+var server = OrientDB({ host: config.publicip, HTTPport: config.db_port || 8080, username: config.db_username, password: config.db_password });
 
 var db = server.use({
  name: config.db_name,
