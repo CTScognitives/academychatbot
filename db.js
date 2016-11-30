@@ -121,5 +121,6 @@ module.exports = {
 	}
 };
 
+db.close();
 
 
