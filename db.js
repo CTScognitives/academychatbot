@@ -2,12 +2,32 @@ var Promise = require('promise');
 var OrientDB =require('orientjs');
 var config = require('./configuration');
 var utilities = require('./utilities');
-var server = OrientDB({ host: config.publicip, HTTPport: config.db_port || 8080, username: config.db_username, password: config.db_password });
+var server = OrientDB({ 
+	host: config.publicip, 
+	HTTPport: config.db_port || 8080, 
+	username: config.db_username, 
+	password: config.db_password 
+});
 
 var db = server.use({
  name: config.db_name,
  username: config.db_username,
  password: config.db_password
+});
+
+/*server.list().then(function (dbs) {
+  console.log('There are ' + dbs.length + ' databases on the server.');
+});*/
+db.open(function(err) {
+ 
+    if (err) {
+        console.log(err);
+        return;
+    }
+ 
+    console.log("Database '" + db.databaseName + "' has " + db.clusters.length + " clusters");
+ 
+    // use db.command(...) function to run OrientDB SQL queries 
 });
 
 var select = function(tableName,fieldName,detail_name) {
