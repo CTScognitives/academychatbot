@@ -25,11 +25,6 @@ var select = function(tableName,fieldName,detail_name) {
                         return result;
                 }).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 }
 
@@ -37,11 +32,6 @@ module.exports = {
 	create : function(tableName,fieldName,userName) {
 		db.query("CREATE VERTEX "+tableName+" SET "+fieldName+"="+"'"+userName+"'").catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 	},
 	findDuration : function(tableName,fieldName,detail_name,callback) {
@@ -56,12 +46,8 @@ module.exports = {
 		callback(list);
 	}).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
+
 	},
 	findPrereq : function(tableName,fieldName,detail_name,callback) {
 		db.query("select expand( out ('Prerequisites')) From "+tableName+" where "+fieldName+"="+"'"+detail_name+"'")
@@ -76,11 +62,6 @@ module.exports = {
 	                callback(list);
 		}).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 
 	
@@ -93,11 +74,6 @@ module.exports = {
 		callback(result);
 		}).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 
 	},
@@ -113,11 +89,6 @@ module.exports = {
 		callback(list);	
 	}).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 
 	},
@@ -140,11 +111,6 @@ module.exports = {
 			}
 		}).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 		var p="(SELECT FROM "+fromDb+" WHERE name = "+"'"+username+"'"+")";
 		var q="(SELECT FROM "+toDb+" WHERE normalised = "+"'"+detail_name+"'"+")";
@@ -160,11 +126,6 @@ module.exports = {
 			}
 		}).catch(function (e) {
         console.log(e);
-    }).done(function () {
-        db.close().then(function(){
-            server.close();
-            console.log('CLOSE');
-        });
     });
 	}
 };

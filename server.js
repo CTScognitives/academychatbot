@@ -100,7 +100,11 @@ academyDialog.add('/findCourse' , [
                         }
                         
 			orient.selectM("Topic","normalised",course,function(results) {
+			try{
 				console.log("result is" ,results);
+			}catch(err){
+				console.log("error is",err);
+			}
 				if(utilities.isEmpty(results)) {
 					session.beginDialog('/topicNotExists');					 
                		                 console.log("Course Doesnot exists");
@@ -120,7 +124,7 @@ academyDialog.add('/findCourse' , [
 academyDialog.add('/topicExists' , [
 	function(session) {
 //		session.send(prompts.recommend_skills);
-		console.log("Going to print duration");
+		console.log("about to print duration");
                 orient.findDuration("Topic","normalised",session.userData.course,function(duration) {
 //                       builder.Prompts.text(session,"**"+session.userData.prereq+"**" +" are the pre-requisites for learning "+session.userData.course+".  \n"+"Total Duration for learning "+session.userData.course +" is "+"**"+duration+"**"+" days");
 //                      builder.Prompts.text(session,"Total Duration for learning "+session.userData.course +" is "+"**"+duration+"**"+" days");
@@ -183,7 +187,7 @@ academyDialog.add('/topicExists' , [
 
 			console.log("After print");
 		});
-		console.log("Going to print duration");
+		console.log("At the last to print duration");
 /*		orient.findDuration("Topic","normalised",session.userData.course,function(duration) {
 			console.log("Inside duration");
 //			 builder.Prompts.text(session,"**"+session.userData.prereq+"**" +" are the pre-requisites for learning "+session.userData.course+".  \n"+"Total Duration for learning "+session.userData.course +" is "+"**"+duration+"**"+" days");
