@@ -18,28 +18,31 @@ var db = server.use({
 /*server.list().then(function (dbs) {
   console.log('There are ' + dbs.length + ' databases on the server.');
 });*/
-db.open(function(err) {
- 
-    if (err) {
-        console.log(err);
-        return;
-    }
- 
-    console.log("Database '" + db.databaseName + "' has " + db.clusters.length + " clusters");
- 
-    // use db.command(...) function to run OrientDB SQL queries 
-});
 
 var select = function(tableName,fieldName,detail_name) {
                db.query("SELECT FROM "+tableName+" WHERE "+fieldName+"="+"'"+detail_name+"'")
                 .then(function(result){
                         return result;
-                })
+                }).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
 }
 
 module.exports = {
 	create : function(tableName,fieldName,userName) {
-		db.query("CREATE VERTEX "+tableName+" SET "+fieldName+"="+"'"+userName+"'");
+		db.query("CREATE VERTEX "+tableName+" SET "+fieldName+"="+"'"+userName+"'").catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
 	},
 	findDuration : function(tableName,fieldName,detail_name,callback) {
 		db.query("SELECT duration from "+tableName+" WHERE "+fieldName+"="+"'"+detail_name+"'")
@@ -51,7 +54,14 @@ module.exports = {
                       list.push(result[i].duration);
                 }
 		callback(list);
-	})
+	}).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
 	},
 	findPrereq : function(tableName,fieldName,detail_name,callback) {
 		db.query("select expand( out ('Prerequisites')) From "+tableName+" where "+fieldName+"="+"'"+detail_name+"'")
@@ -64,7 +74,15 @@ module.exports = {
 				list.push(result[i].name);
                 	}
 	                callback(list);
-		})
+		}).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
+
 	
 	},
 	selectM : function(tableName,fieldName,detail_name,callback) {
@@ -73,7 +91,15 @@ module.exports = {
 		result = JSON.stringify(result);
                 result = JSON.parse(result);
 		callback(result);
-		})
+		}).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
+
 	},
 	findDetails : function(username,detail,callback){
 		db.query("select expand( out("+"'"+detail+"'"+")) From Users where name="+"'"+username+"'")
@@ -85,7 +111,15 @@ module.exports = {
 			list.push(result[i].normalised);		
 		}
 		callback(list);	
-	})
+	}).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
+
 	},
 	insertUserDetails : function(username,detail,detail_name,fromDb,toDb){
 		var username;
@@ -104,7 +138,14 @@ module.exports = {
 			}else {
 				console.log("Topic Exists");
 			}
-		});
+		}).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
 		var p="(SELECT FROM "+fromDb+" WHERE name = "+"'"+username+"'"+")";
 		var q="(SELECT FROM "+toDb+" WHERE normalised = "+"'"+detail_name+"'"+")";
 		db.query("select from "+detail+" where out IN "+p+" and in IN "+q)
@@ -117,10 +158,16 @@ module.exports = {
 			}else {
 				console.log("EDGE between "+fromDb + " "+toDb+" exists for user"+username);
 			}
-		});
+		}).catch(function (e) {
+        console.log(e);
+    }).done(function () {
+        db.close().then(function(){
+            server.close();
+            console.log('CLOSE');
+        });
+    });
 	}
 };
 
-db.close();
 
 
