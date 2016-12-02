@@ -12,7 +12,7 @@ module.exports = {
 	//port:3433,
 	db_username : 'root',
 	db_password : 'root',
-	db_name : 'chatbot',
+	db_name : 'academychat',
 	//model : "https://api.projectoxford.ai/luis/v1/application?id=7b180b80-5642-48b2-8cf3-e45fa8aa50b0&subscription-key=bfdc0e3842e94b4b964c6eb391714ad1&q=",
 	model :"https://api.projectoxford.ai/luis/v1/application?id=7b180b80-5642-48b2-8cf3-e45fa8aa50b0&subscription-key=bfdc0e3842e94b4b964c6eb391714ad1&q=",
 	profiles : {
