@@ -5,13 +5,8 @@ Configurations
 module.exports = {
         ip :"10.111.187.85",
         publicip : "54.90.159.251",
-	//publicip :"https://academybotcts.azurewebsites.net",
-<<<<<<< HEAD
+	//publicip :"https://academybotcts.azurewebsites.net"
         db_port :2424,
-=======
-        db_port : 8082,
->>>>>>> d630b72ac9ea6d67af14d72e9712057bbf2cf50e
-
 	port : 5601,
 	//port:3433,
 	db_username : 'root',
