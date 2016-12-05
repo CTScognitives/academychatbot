@@ -4,7 +4,7 @@ var config = require('./configuration');
 var utilities = require('./utilities');
 var server = OrientDB({ 
 	host: config.publicip, 
-	HTTPport: config.db_port || 8080, 
+	HTTPport: config.db_port, 
 	username: config.db_username, 
 	password: config.db_password 
 });

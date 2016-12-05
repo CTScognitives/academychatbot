@@ -6,7 +6,7 @@ module.exports = {
         ip :"10.111.187.85",
         publicip : "54.90.159.251",
 	//publicip :"https://academybotcts.azurewebsites.net",
-        db_port : 8080,
+        db_port :2424,
 
 	port : 5601,
 	//port:3433,
