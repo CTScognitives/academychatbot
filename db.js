@@ -11,8 +11,6 @@ var server = OrientDB({
 
 var db = server.use({
  name: config.db_name,
- username: config.db_username,
- password: config.db_password
 });
 
 /*server.list().then(function (dbs) {
@@ -129,6 +127,3 @@ module.exports = {
     });
 	}
 };
-
-
-

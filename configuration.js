@@ -6,12 +6,12 @@ module.exports = {
         ip :"10.111.187.85",
         publicip : "54.90.159.251",
 	//publicip :"https://academybotcts.azurewebsites.net"
-        db_port :2424,
+        db_port :8082,
 	port : 5601,
 	//port:3433,
 	db_username : 'root',
 	db_password : 'root',
-	db_name : 'academychat',
+	db_name : 'chatbot',
 	//model : "https://api.projectoxford.ai/luis/v1/application?id=7b180b80-5642-48b2-8cf3-e45fa8aa50b0&subscription-key=bfdc0e3842e94b4b964c6eb391714ad1&q=",
 	model :"https://api.projectoxford.ai/luis/v1/application?id=7b180b80-5642-48b2-8cf3-e45fa8aa50b0&subscription-key=bfdc0e3842e94b4b964c6eb391714ad1&q=",
 	profiles : {
