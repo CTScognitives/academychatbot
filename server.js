@@ -12,7 +12,7 @@ var academyDialog = new builder.BotConnectorBot();
 
 //BOT REST end point
 var server = restify.createServer();
-server.use(academyDialog.verifyBotFramework({ appId: process.env.MICROSOFT_APP_ID , appSecret: process.env.MICROSOFT_APP_PASSWORD }));
+server.use(academyDialog.verifyBotFramework({ appId: process.env.MICROSOFT_APP_ID || 'chatbot123', appSecret: process.env.MICROSOFT_APP_PASSWORD || '59f44ecb3f704bb49f1f2a9635e5e33c' }));
 server.post('/api/messages', academyDialog.verifyBotFramework(),academyDialog.listen());
 server.get(/.*/, restify.serveStatic({
 	'directory': '.',
